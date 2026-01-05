@@ -1,0 +1,19 @@
+#
+# Whitelist 방식:
+# - 기본적으로 전부 무시
+# - CLAUDE.md 와 skills/ 만 추적 허용
+#
+
+# ignore everything by default
+*
+
+# allow these files/folders
+!.gitignore
+!CLAUDE.md
+!skills/
+!skills/**
+
+# but still ignore python caches inside skills
+skills/**/__pycache__/
+skills/**/*.pyc
+skills/**/*.pyo
