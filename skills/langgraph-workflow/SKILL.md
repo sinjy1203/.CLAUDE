@@ -20,7 +20,8 @@ workflow/
 │   └── {node_name}.py  # Node implementation
 ├── builder.py          # Connect nodes and compile graph
 ├── state.py            # Input/Output states and nested models
-└── utils.py            # Utility functions (retry policy, parsers)
+├── utils.py            # Utility functions (retry policy, parsers)
+└── llm_factory.py      # LLM instance factory (optional, for rate limiting)
 ```
 
 ## File Overview
@@ -44,6 +45,12 @@ workflow/
 - `StructuredOutputParser`: JSON parser for Bedrock LLM responses
 
 → See [references/utils.md](references/utils.md) for detailed rules and template
+
+### llm_factory.py (optional)
+- `TPMRateLimiter` / `RateLimitedChatOpenAI`: Token-based rate limiting for OpenAI API
+- Use when TPM rate limits are a concern (e.g., map-reduce patterns with many parallel calls)
+
+→ See [references/tpm-rate-limit.md](references/tpm-rate-limit.md) for detailed guide and template
 
 ### nodes/
 - One file per node
